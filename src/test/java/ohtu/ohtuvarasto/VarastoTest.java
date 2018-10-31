@@ -64,5 +64,68 @@ public class VarastoTest {
         // varastossa pitäisi olla tilaa 10 - 8 + 2 eli 4
         assertEquals(4, varasto.paljonkoMahtuu(), vertailuTarkkuus);
     }
-
+    
+    @Test
+    public void kaksoisKonststruktoriNegatiivinen() {
+        varasto = new Varasto(-10, -120);
+        
+        assertTrue(0 == varasto.getTilavuus() && 0 == varasto.getSaldo());
+    }
+    
+    @Test
+    public void kaksoisKonststruktoriNormaali() {
+        varasto = new Varasto(20, 10);
+        
+        assertTrue(20 == varasto.getTilavuus());
+        assertTrue(10 == varasto.getSaldo());
+    }
+    
+    @Test
+    public void kaksoisKonststruktoriIsoSaldo() {
+        varasto = new Varasto(20, 30);
+        
+        assertTrue(20 == varasto.getTilavuus() && 20 == varasto.getSaldo());
+    }
+    
+    @Test
+    public void toStringTest() {
+        assertEquals("saldo = 0.0, vielä tilaa 10.0", varasto.toString());
+    }
+    
+    @Test
+    public void negatiivinenKonstuktori() {
+        varasto = new Varasto(-2);
+        assertEquals(0, varasto.getTilavuus(), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void negatiivinenLisays() {
+        varasto.lisaaVarastoon(-20);
+        
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void liaanIsoLisays() {
+        varasto.lisaaVarastoon(20);
+        
+        assertEquals(10, varasto.getSaldo(), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void negatiivinenOtto() {
+        varasto.lisaaVarastoon(5);
+        varasto.otaVarastosta(-2);
+        
+        assertEquals(5, varasto.getSaldo(), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void liianIsoOtto() {
+        varasto.lisaaVarastoon(5);
+        double otettu = varasto.otaVarastosta(10);
+        
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+        assertTrue(5 == otettu);
+    }
 }
