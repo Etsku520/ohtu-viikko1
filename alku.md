@@ -1,1 +1,0 @@
-aluperäne on parempi
