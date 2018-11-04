@@ -28,7 +28,7 @@ dependencies {
 }
 
 // Define the main class for the application
-mainClassName = 'ohtu.ohtuvarasto.main.Main'
+mainClassName = 'main.Main'
 
 jar {
     manifest {
@@ -39,11 +39,6 @@ jar {
 apply plugin: "jacoco"
 
 jacocoTestReport {
-    reports {
-        xml.enabled true
-        html.enabled true
-    }
-    jacocoTestReport {
     reports {
         xml.enabled true
         html.enabled true
