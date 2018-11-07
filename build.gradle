@@ -5,6 +5,9 @@
  * For more details take a look at the Java Quickstart chapter in the Gradle
  * user guide available at https://docs.gradle.org/3.4.1/userguide/tutorial_java_projects.html
  */
+apply plugin: 'jacoco'
+
+apply plugin: 'checkstyle'
 
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
@@ -28,15 +31,13 @@ dependencies {
 }
 
 // Define the main class for the application
-mainClassName = 'ohtu.ohtuvarasto.main.Main'
+mainClassName = 'ohtu.main.Main'
 
 jar {
     manifest {
-        attributes 'Main-Class': 'ohtu.ohtuvarasto.main.Main'
+        attributes 'Main-Class': 'ohtu.main.Main'
     }
 }
-
-apply plugin: "jacoco"
 
 jacocoTestReport {
     reports {
