@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
  * @author hceetu
  */
 public class StatisticsTest {
-     Reader readerStub = new Reader() {
+    Reader readerStub = new Reader() {
  
         public List<Player> getPlayers() {
             ArrayList<Player> players = new ArrayList<Player>();
